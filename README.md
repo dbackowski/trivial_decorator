@@ -20,7 +20,55 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+#### Writing Decorators
+
+Decorators inherit from TrivialDecorator::Base, live in your app/decorators directory, and are named for the model that they decorate:
+
+```ruby
+# app/decorators/user_decorator.rb
+
+class UserDecorator < TrivialDecorator::Base
+  def full_name
+    first_name + " " + last_name
+  end
+end
+```
+
+#### Accessing helpers
+
+```ruby
+# app/decorators/user_decorator.rb
+
+class UserDecorator < TrivialDecorator::Base
+  def full_name
+    h.content_tag(:strong, first_name + " " + last_name)
+  end
+end
+```
+
+#### Decorating Objects
+
+```ruby
+# app/controllers/users_controller.rb
+
+class UsersController < ApplicationController
+  def index
+    @users = decorate(User.all)
+  end
+end
+```
+
+This will use UserDecorator, if you want to use other decorator, just pass his class name as second param to decorate.
+
+```ruby
+# app/controllers/users_controller.rb
+
+class UsersController < ApplicationController
+  def index
+    @users = decorate(User.all, OtherDecorator)
+  end
+end
+```
 
 ## Contributing
 
