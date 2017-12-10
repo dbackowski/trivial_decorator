@@ -1,4 +1,4 @@
-# TrivialDecorator
+# TrivialDecorator [![Build Status](https://travis-ci.org/dbackowski/trivial_decorator.svg?branch=master)](https://travis-ci.org/dbackowski/trivial_decorator)
 
 A simple decorator for Rails.
 
